@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Codecraft Day 15 Loops - #6
+Write a guessing game using looping and prompts!
+Have the user come up with a number between 1 and 100 (inclusive), but not enter it into the computer. Have the computer guess numbers in that same range, and ask the user if that is the number (e.g. “Is 40 your number?”). You can use prompt text (propmt("is 40 your number")) to accomplish this. If the number is too high, have the user enter “H”. If the number is too low, have the user enter “L”. If the computer guessed the number, have the user enter “Y”, and start a new game. Can you write an efficient algorithm so that the computer will find your number in the minimum number of guesses? -->
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div id="output"></div>
+<script>
+
+		/* Prompt the players for their names. */
+		var minGuess = 1;
+		var maxGuess = 100;
+		var userResponse = "N";
+		var instructions = "Let me guess your number.\n Enter Y for Yes,\n H if I am too high,\n L if I am too low,\n or Q to quit the game;"
+		alert(instructions);
+		do {
+			/* guess a number between 1 and 100 (inclusive) */
+			/* reset the bounds on the guess per user input whether guess number is higher or lower than their number */
+			var myGuess = getRandomInt(minGuess,maxGuess);
+			userResponse = prompt("Is "+myGuess+" your number?");
+			/* reset maxGuess if myGuess too high */
+			if( (userResponse==="H") || (userResponse==="h") ) {
+				maxGuess = myGuess;
+			} 
+			/* reset minGuess if myGuess too high */
+			else if ((userResponse==="L") || (userResponse==="l") ) {
+				minGuess = myGuess;
+			} 
+			/* reset to initial values if myGuess was correct */
+			else if( (userResponse==="Y") || (userResponse==="y") ) {
+				minGuess = 1;
+				maxGuess = 100;
+				alert("Excellent, lets try again! "+instructions);
+			} 
+			/* default allows user to enter any string besides Y/y/H/h/L/l/Q/q to break loop */
+			else {
+				/* default allows user to enter any string besides Y/y/H/h/L/l/Q/q to break loop */
+				break;
+			}
+		} while ( (userResponse !== "Q") || (userResponse==="q") )
+		alert("Thank you for playing!");
+
+		/* http://stackoverflow.com */
+		// Returns a random integer between min (included) and max (included)
+		function getRandomInt(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+</script>
+	
+</body>
+</html>

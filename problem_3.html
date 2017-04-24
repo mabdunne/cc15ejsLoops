@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Codecraft Day 15 Loops - #3 "Chess Board". EJS pg. 38. -->
+<!--
+Write a program that creates a string that represents an 8×8 grid, using newline characters to separate lines. At each position of the grid there is either a space or a “#” character. The characters should form a chess board.
+Passing this string to console.log should show something like this:
+_#_#_#_#\n {even row 0 starts with white (empty) square, ends with black (#) square}
+#_#_#_#_\n {odd  row 1 starts with black (#) square, ends with white (empty) square}
+_#_#_#_#\n
+#_#_#_#_\n
+_#_#_#_#\n
+#_#_#_#_\n
+_#_#_#_#\n
+#_#_#_#_\n
+When you have a program that generates this pattern, define a variable size = 8 and change the program so that it works for any size, outputting a grid of the given width and height.
+-->
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="output"></div>
+
+	<script>
+		/* Initialize board size */
+		var boardSize = 8;
+		/* Initialize black chess board squares */
+		var blackSquare = "#";
+		/* initialize white chess board squares */
+		var whiteSquare = "_";
+		/* initialize row terminator \n */
+		var rowTerminator = "\n"
+		/* initialize chessboard */
+		var chessBoard = "";
+		/* temp row size variable to acound for even row padding */
+		var rowSize = boardSize;
+		/* outer loop counts rows using i */
+		for ( var i=0; i<boardSize; i++ ) {
+			rowSize = boardSize;
+			/* even rows pad left square with white square */
+			if (i%2 === 0) {
+				chessBoard += whiteSquare; 
+				rowSize = boardSize - 1;
+			} 
+			/* inner loop counts columns using j, accounting for even row pad above */
+			for ( var j=0; j<rowSize; j++ ) {
+				/* alternate white and black squares, starting with black */
+				if (j%2 == 0) {
+					chessBoard += blackSquare;
+				} else {
+					chessBoard += whiteSquare;
+				}
+			}
+			/* add row terminator */
+			chessBoard += rowTerminator;
+		}
+		console.log(chessBoard);
+	</script>
+	
+</body>
+</html>

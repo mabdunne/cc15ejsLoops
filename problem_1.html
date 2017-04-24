@@ -1,0 +1,36 @@
+	<!DOCTYPE html>
+<html lang="en">
+<!-- Codecraft Day 15 Loops - #1 "Looping a Triangle". EJS pg. 37 -->
+<!--
+Write a loop that makes seven calls to console.log to output the following triangle:
+#
+##
+###
+####
+#####
+######
+#######
+It may be useful to know that you can find the length of a string by writing .length after it.
+var abc = "abc";  abc.length => 3
+-->
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="output"></div>
+
+	<script>
+		/* create hash char */
+		var hash = "#";
+		/* create triangle variable */
+		var triangle = "";
+		/* loop to add hash to triangle every iteration */
+		for ( var i = 0; i < 7; i++ ) {
+			triangle += hash;
+			console.log(triangle)
+		}
+	</script>
+	
+</body>
+</html>
